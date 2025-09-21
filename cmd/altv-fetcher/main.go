@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"time"
 
-	Configs "github.com/itshahrad/altv-fetcher/internal/configs"
-	Json "github.com/itshahrad/altv-fetcher/internal/json"
+	Configs "github.com/itshahrad/altv-fetcher/pkg/configs"
+	Json "github.com/itshahrad/altv-fetcher/pkg/json"
 )
 
 func main() {
