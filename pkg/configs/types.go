@@ -34,3 +34,7 @@ type Servers struct {
 	MasterlistIconURL   *string  `json:"masterlist_icon_url"`
 	MasterlistBannerURL *string  `json:"masterlist_banner_url"`
 }
+
+var (
+	API_URL = "https://api.alt-mp.com/servers"
+)

@@ -8,17 +8,13 @@ import (
 	"net/http"
 	"time"
 
-	Servers "github.com/itshahrad/altv-fetcher/internal/configs"
-	json_saver "github.com/itshahrad/altv-fetcher/internal/json"
-)
-
-var (
-	API_URL = "https://api.alt-mp.com/servers"
+	Configs "github.com/itshahrad/altv-fetcher/internal/configs"
+	Json "github.com/itshahrad/altv-fetcher/internal/json"
 )
 
 func main() {
 	// Create request
-	req, err := http.NewRequest("GET", API_URL, nil)
+	req, err := http.NewRequest("GET", Configs.API_URL, nil)
 	if err != nil {
 		log.Fatalf("Error creating request: %v", err)
 	}
@@ -37,13 +33,13 @@ func main() {
 	}
 
 	// Parse JSON
-	var servers []Servers.Servers
+	var servers []Configs.Servers
 	if err := json.Unmarshal(body, &servers); err != nil {
 		log.Fatalf("Error parsing JSON: %v", err)
 	}
 
 	performance := time.Now()
-	if _, err := json_saver.JsonSaver(servers); err != nil {
+	if _, err := Json.JsonSaver(servers); err != nil {
 		fmt.Printf("failed to save fetched masterlist!\n %v", err)
 	} else {
 		fmt.Printf("%d servers fetched within: %v\nservers saved to servers.json!", len(servers), time.Since(performance))
