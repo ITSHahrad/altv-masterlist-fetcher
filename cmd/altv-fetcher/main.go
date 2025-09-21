@@ -13,6 +13,9 @@ import (
 )
 
 func main() {
+	// Create time for performance
+	performance := time.Now()
+
 	// Create request
 	req, err := http.NewRequest("GET", Configs.API_URL, nil)
 	if err != nil {
@@ -38,7 +41,7 @@ func main() {
 		log.Fatalf("Error parsing JSON: %v", err)
 	}
 
-	performance := time.Now()
+	// Request to save servers as json
 	if _, err := Json.JsonSaver(servers); err != nil {
 		fmt.Printf("failed to save fetched masterlist!\n %v", err)
 	} else {
